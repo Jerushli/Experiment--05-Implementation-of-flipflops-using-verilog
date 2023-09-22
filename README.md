@@ -1,4 +1,4 @@
-# Experiment--05-Implementation-of-flipflops-using-verilog
+# Experiment-05 Implementation of flipflops using verilog
 ### AIM: To implement all the flipflops using verilog and validating their functionality using their functional tables
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
@@ -101,40 +101,67 @@ From the above characteristic table, we can directly write the next state equati
 Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
-### Procedure
-/* write all the steps invloved */
+### Procedure:
+ 1.Create a project with required entities.
+ 
+ 2.Create a module along with respective file name.
+ 
+ 3.Run the respective programs for the given boolean equations.
+ 
+ 4.Run the module and get the respective RTL outputs.
+ 
+ 5.Create university program(VWF) for getting timing diagram.
+ 
+ 6.Give the respective inputs for timing diagram and obtain the results.
 
-
-
-### PROGRAM 
-/*
+### PROGRAM :
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
+Developed by: Jerushlin Jose JB
 
+RegisterNumber: 212222240039
+### SR Flipflop
+```
+module flipflop(s,r,Q,Qbar,clk);
+input s,r,clk;
+output reg Q,Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=s|(Q&(~r));
+Qbar=r|(Qbar&(~s));
+end
+endmodule
+```
+### JK Flipflop
+```
+module jkflipflop(k,clk,j,Q,Qbar);
+input k,clk,j;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=((~Q)&j)|(Q&~k);
+Qbar=(~Qbar&k)|(Qbar&~j);
+end
+endmodule
+```
+### RTL LOGIC FOR SR FLIPFLOPS 
+![Screenshot 2023-09-15 091447](https://github.com/Sabariakash22009103/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119390227/1bc88871-4bf5-448f-9f86-927c28d54f9b)
+### RTL LOGIC FOR JK FLIPFLOPS
+![WhatsApp Image 2023-09-22 at 09 20 39](https://github.com/Sabariakash22009103/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119390227/09d04eb0-3cbd-4737-a02f-3458f788b7f9)
 
+### Waveform Output For SR:
+![Screenshot 2023-09-15 093155](https://github.com/Sabariakash22009103/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119390227/d3c1e24f-ba47-467f-841d-37772682dd41)
+### Waveform Output For JK:
+![image](https://github.com/Sabariakash22009103/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119390227/4cef0bb8-8b6b-41cf-8502-449d3bd82d7f)
 
-
-
-### RTL LOGIC FOR FLIPFLOPS 
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
-
+### Truth table For SR:
+![image](https://github.com/Sabariakash22009103/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119390227/62db8ecc-51b1-4210-9316-a4242725dfec)
+### Truth table For JK:
+![Screenshot 2023-09-22 093655](https://github.com/Sabariakash22009103/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119390227/081d22fe-e63b-434c-8352-4e8cf27df2af)
 ### RESULTS 
+Thus the flipflops circuits are designed and the truth tables is verified using quartus software.
